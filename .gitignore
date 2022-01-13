@@ -1,0 +1,58 @@
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# intellij
+/.idea
+*.iml
+/*.ipr
+/*.iws
+**/out/
+/.shelf/
+
+# gradle
+.gradle/
+.out/
+build/
+/buildSrc/.gradle/
+.dist/
+
+# maven (examples)
+target/
+
+# Eclipse
+/bin/
+/.settings/
+/.project
+/.classpath
+/build/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/nbdist/
+/.nb-gradle/
+
+#VS Code
+.vscode/
+
+# Mac
+.DS_Store
+
+# Generated Code
+generated/
+
+# Java Hotspot
+.attach_pid*
+
+# Node
+npm-debug.log
+
+# Generic
+.ignore
+
+# CI
+jenkins/
+
+# Temp files for scripts/update-copyright.sh
+/update-copyright-modified-files
+/update-copyright-temp

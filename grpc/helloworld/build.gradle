@@ -1,0 +1,58 @@
+/*
+ * Copyright © 2022 Apple Inc. and the ServiceTalk project authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+buildscript {
+  dependencies {
+    classpath "com.google.protobuf:protobuf-gradle-plugin:$protobufGradlePluginVersion"
+  }
+}
+
+apply plugin: "com.google.protobuf"
+
+dependencies {
+  implementation platform("io.servicetalk:servicetalk-bom:$servicetalkVersion")
+  implementation "io.servicetalk:servicetalk-annotations"
+  implementation "io.servicetalk:servicetalk-grpc-netty"
+  implementation "io.servicetalk:servicetalk-grpc-protoc"
+  implementation "io.servicetalk:servicetalk-grpc-protobuf"
+
+  implementation "org.slf4j:slf4j-api:$slf4jVersion"
+  runtimeOnly "org.apache.logging.log4j:log4j-slf4j-impl:$log4jVersion"
+}
+
+protobuf {
+  protoc {
+    artifact = "com.google.protobuf:protoc:$protobufVersion"
+  }
+
+  plugins {
+    servicetalk_grpc {
+      artifact = "io.servicetalk:servicetalk-grpc-protoc:$servicetalkVersion:all@jar"
+    }
+  }
+  generateProtoTasks {
+    all().each { task ->
+      task.plugins {
+        servicetalk_grpc {
+          // Need to tell protobuf-gradle-plugin to output in the correct directory if all generated
+          // code for a single proto goes to a single file (e.g. "java_multiple_files = false" in the .proto).
+          outputSubDir = "java"
+        }
+      }
+    }
+  }
+  generatedFilesBaseDir = "$buildDir/generated/sources/proto"
+}
