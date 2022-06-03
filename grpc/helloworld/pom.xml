@@ -68,7 +68,7 @@
     <dependencies>
       <dependency>
         <groupId>io.servicetalk</groupId>
-        <artifactId>servicetalk-bom</artifactId>
+        <artifactId>servicetalk-dependencies</artifactId>
         <version>${servicetalk.version}</version>
         <type>pom</type>
         <scope>import</scope>
