@@ -13,7 +13,7 @@ Maven integration works.
 The example Gradle `build.gradle` and Maven `pom.xml` include use of BOM 
 ([Bill of Materials](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms))
 `pom` and `module` files. These files define the versions of modules which might be included as dependencies, but
-does not include module as a dependeny. Later when the module is included as a dependency the dependency is specified
+do not include module as a dependency. Later when the module is included as a dependency the dependency is specified
 without including a version and the version specified in the BOM is used. Said another way, BOMs allow separation of
 dependency management and version management. Centralizing the management of versions to a single file 
 greatly reduces the maintenance burden for updating to new versions and improves consistency because all references to a
@@ -21,12 +21,14 @@ dependency will use the same version.
 
 ServiceTalk includes two BOM files each with slightly different purposes; `servicetalk-bom` and 
 `servicetalk-dependencies`. The `servicetalk-bom` BOM includes version information all ServiceTalk modules; version
-selection for dependencies is done in invidiual modules. In addition to defining versions of all ServiceTalk modules 
-the versions for ServiceTalk's dependencies are also specified. The `servicetalk-dependencies` BOM should be preferred 
-whenever possible. Unless your application requires different versions of these same dependencies then using the 
-`servicetalk-dependencies` BOM is the most convenient way to ensure that a tested and supported set of modules is used 
-for building and running the application. To override a specific dependency version with your application's preference 
-you can use the : 
+selection for dependencies is done in individual modules. The `servicetalk-dependencies` BOM extends the 
+`servicetalk-bom` by also defining specific versions to be used for the external modules ServiceTalk depends upon. 
+Unless your application requires different versions of these same dependencies then using the `servicetalk-dependencies`
+BOM is the most convenient way to ensure that a tested and supported set of modules is used or building and running the 
+application. The `servicetalk-dependencies` BOM should be preferred whenever possible. 
+
+To override a specific dependency version with your application's required version you can use something like the 
+following in your `build.gradle` : 
 
 ```groovy
 implementation(platform("io.servicetalk:servicetalk-dependencies:$servicetalkVersion"))
