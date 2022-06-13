@@ -10,8 +10,8 @@ ServiceTalk gRPC code generation Maven integration works.
 ## ServiceTalk BOM
 The example Gradle `build.gradle` and Maven `pom.xml` include use of BOM 
 ([Bill of Materials](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms))
-`pom` and `module` files. BOM files allow separation of dependency management and version management; a BOM specifies on
-component versions, not dependencies. Centralizing the management of versions to a single file greatly reduces the 
+`pom` and `module` files. BOM files allow separation of dependency management and version management; a BOM specifies 
+only component versions, not dependencies. Centralizing the management of versions to a single file greatly reduces the 
 maintenance burden for updating to new versions and improves consistency because all references to a dependency will use 
 the same version. The BOM files define the versions of modules which might be included as dependencies, but do not 
 include the module as a dependency. Later when the module is included as a dependency, the dependency is specified 
