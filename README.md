@@ -1,22 +1,21 @@
 # ServiceTalk Examples
 
 These examples are meant to demonstrate Gradle and Maven build file
-configuration outside of the ServiceTalk project. For a full set of
-examples see the
+configuration outside the ServiceTalk project. For a full set of examples see the
 [ServiceTalk Repo](https://github.com/apple/servicetalk/tree/main/servicetalk-examples).
 
-This project uses gradle to build and also includes a pom.xml in the gRPC
-`helloworld` example to demo how the ServiceTalk gRPC code generation
-Maven integration works.
+This project uses Gradle to build and also includes a Maven `pom.xml` in the gRPC `helloworld` example to demo how the 
+ServiceTalk gRPC code generation Maven integration works.
 
 ## ServiceTalk BOM
 The example Gradle `build.gradle` and Maven `pom.xml` include use of BOM 
 ([Bill of Materials](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms))
-`pom` and `module` files. BOM filess allow separation of dependency management and version management. Centralizing the
-management of versions to a single file greatly reduces the maintenance burden for updating to new versions and improves
-consistency because all references to a dependency will use the same version. These files define the versions of modules
-which might be included as dependencies, but do not include module as a dependency. Later when the module is included as
-a dependency the dependency is specified without including a version and the version specified in the BOM is used.
+`pom` and `module` files. BOM files allow separation of dependency management and version management; a BOM specifies on
+component versions, not dependencies. Centralizing the management of versions to a single file greatly reduces the 
+maintenance burden for updating to new versions and improves consistency because all references to a dependency will use 
+the same version. The BOM files define the versions of modules which might be included as dependencies, but do not 
+include the module as a dependency. Later when the module is included as a dependency, the dependency is specified 
+without including a version and the version specified in the BOM is used.
 
 ServiceTalk includes two BOM files each with slightly different purposes; `servicetalk-bom` and 
 `servicetalk-dependencies`. The `servicetalk-bom` BOM includes version information all ServiceTalk modules; version
