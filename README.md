@@ -24,6 +24,9 @@ extends the `servicetalk-bom` by also defining specific versions to be used for 
 upon. Unless your application requires different versions of these same dependencies then using the 
 `servicetalk-dependencies` BOM is the most convenient way to ensure that a tested and supported set of modules is used 
 or building and running the application. The `servicetalk-dependencies` BOM should be preferred whenever possible. 
+Using the `servicetalk-bom` may be easier when your application wishes to do more complete management of external
+dependencies or you wish to include ServiceTalk as an `enforcedPlatform`, but do not want the external dependencies to 
+be included in that constraint.
 
 To override a specific dependency version with your application's required version you can use something like the 
 following in your `build.gradle`: 
@@ -44,7 +47,3 @@ implementation ("com.fasterxml.jackson.core:jackson-databind") {
     }
 }
 ```
-
-Using the `servicetalk-bom` may be easier when your application wishes to do more complete management of external
-dependencies or you wish to include ServiceTalk as an `enforcedPlatform`, but do not want the external
-dependencies to be included in that constraint.
