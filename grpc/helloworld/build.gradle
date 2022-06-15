@@ -23,19 +23,20 @@ buildscript {
 apply plugin: "com.google.protobuf"
 
 dependencies {
-  implementation platform("io.servicetalk:servicetalk-bom:$servicetalkVersion")
+  implementation(platform("io.servicetalk:servicetalk-dependencies:$servicetalkVersion"))
+
   implementation "io.servicetalk:servicetalk-annotations"
   implementation "io.servicetalk:servicetalk-grpc-netty"
   implementation "io.servicetalk:servicetalk-grpc-protoc"
   implementation "io.servicetalk:servicetalk-grpc-protobuf"
 
-  implementation "org.slf4j:slf4j-api:$slf4jVersion"
-  runtimeOnly "org.apache.logging.log4j:log4j-slf4j-impl:$log4jVersion"
+  implementation "org.slf4j:slf4j-api"
+  runtimeOnly "org.apache.logging.log4j:log4j-slf4j-impl"
 }
 
 protobuf {
   protoc {
-    artifact = "com.google.protobuf:protoc:$protobufVersion"
+    artifact = "com.google.protobuf:protoc"
   }
 
   plugins {

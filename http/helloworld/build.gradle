@@ -15,9 +15,9 @@
  */
 
 dependencies {
-  implementation platform("io.servicetalk:servicetalk-bom:$servicetalkVersion")
+  implementation platform("io.servicetalk:servicetalk-dependencies:$servicetalkVersion")
   implementation "io.servicetalk:servicetalk-annotations"
   implementation "io.servicetalk:servicetalk-http-netty"
 
-  runtimeOnly "org.apache.logging.log4j:log4j-slf4j-impl:$log4jVersion"
+  runtimeOnly "org.apache.logging.log4j:log4j-slf4j-impl"
 }
