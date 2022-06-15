@@ -37,7 +37,7 @@ implementation(enforcedPlatform("io.netty:netty-bom")) {
 // Overrides the default Jackson databind module version with a specific version
 implementation ("com.fasterxml.jackson.core:jackson-databind") {
     version {
-        strictly '2.13'
+        strictly '2.13.3'
     }
 }
 ```
